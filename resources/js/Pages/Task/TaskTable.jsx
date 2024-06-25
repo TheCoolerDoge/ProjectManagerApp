@@ -136,9 +136,13 @@ export default function TaskTable({tasks, success, queryParams = null, hideProje
                             <img src={task.image_path} style={{width:80}} alt="image" />
                         </td>
                         {!hideProjectColumn && (<td className="px-3 py-2">{task.project.name}</td>)}
-                        <td className="px-3 py-2">{task.name}</td>
                         <td className="px-3 py-2">
-                            <span className={"px-2 py-1 rounded text-white " + TASK_STATUS_CLASS_MAP[task.status]}>
+                            <Link href={route("task.show", task.id)} className=" text-white hover:underline">
+                                {task.name}
+                            </Link>
+                        </td>
+                        <td className="px-3 py-2">
+                            <span className={"px-2 py-1 rounded text-nowrap text-white " + TASK_STATUS_CLASS_MAP[task.status]}>
                                 {TASK_STATUS_TEXT_MAP[task.status]}
                             </span>
                         </td>
